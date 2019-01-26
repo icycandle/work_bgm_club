@@ -1,24 +1,29 @@
 import VueRouter from 'vue-router';
 import Vue from 'vue';
 
+import Rules from './components/Rules';
+import BackGroundMusicDetail from './components/BackGroundMusicDetail';
+import MusicForm from './components/MusicForm';
+import AboutUs from './components/AboutUs';
+
 Vue.use(VueRouter);
 
 const routes = [{
   path: '/',
-  component: require('./components/Rules.vue').default,
+  component: Rules,
 },
 {
   // this.$route.params.id
   path: '/bgm/:id',
-  component: require('./components/BackGroundMusicDetail.vue').default,
+  component: BackGroundMusicDetail,
 },
 {
   path: '/music-form',
-  component: require('./components/MusicForm.vue').default,
+  component: MusicForm,
 },
 {
   path: '/about-us',
-  component: require('./components/AboutUs.vue').default,
+  component: AboutUs,
 },
   // {
   //     path: '/login',
