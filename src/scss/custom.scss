@@ -1,0 +1,23 @@
+// Your variable overrides
+$main-color: #f8b62d;
+$main-color-light: #eee4b7;
+$main-color-gradual: #f6df86;
+
+$auxiliary-color: #e16b24;
+$auxiliary-color-light: #eaae81;
+$auxiliary-color-gradual: #ff9800;
+
+$secondary-auxiliary-color: #4f2a11;
+
+$black: #000000;
+$gray: #b5b5b6;
+$white: #ffffff;
+
+$primary: $main-color;
+$secondary: $auxiliary-color;
+
+$body-bg: #555;
+$body-color: $main-color-light;
+
+// Bootstrap and its default variables
+@import "node_modules/bootstrap/scss/bootstrap";
