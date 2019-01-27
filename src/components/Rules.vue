@@ -19,8 +19,8 @@
         <p
           class="mb-0"
         >{{message}}</p>
-        <footer class="blockquote-footer">2019年某個距離週末還有三天半的週二下午，
-          <cite title="Source Title">臺灣青年詩人羅毓嘉</cite>
+        <footer class="blockquote-footer">{{blockquote}}
+          <cite title="Source Title">{{cite}}</cite>
         </footer>
       </blockquote>
     </div>
@@ -32,6 +32,8 @@ export default {
   name: 'Rules',
   data: () => ({
     message: '真的好喜歡上班啊怎麼辦呢'.repeat(25),
+    blockquote: '2019年某個距離週末還有三天半的週二下午，',
+    cite: '臺灣青年詩人羅毓嘉',
   }),
 };
 </script>

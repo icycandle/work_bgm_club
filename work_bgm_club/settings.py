@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'webpack_loader',
     'work_bgm_club',
+    'musiclink',
 ]
 
 MIDDLEWARE = [

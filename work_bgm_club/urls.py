@@ -18,10 +18,17 @@ from django.urls import path, include
 from django.views.generic import TemplateView
 # from work_bgm_club import views
 
+from rest_framework import routers
+from musiclink.viewsets import MusicLinkViewSet
+
+router = routers.DefaultRouter(trailing_slash=False)
+router.register(r'musiclinks', MusicLinkViewSet)
+
 urlpatterns = [
+    path('api/', include(router.urls)),
     path('admin/', admin.site.urls),
     # path('api/public/', views.public),
     # path('api/private/', views.private),
     path('accounts/', include('allauth.urls')),
-    path('', TemplateView.as_view(template_name='index.html'), name='index'),
+    path('', TemplateView.as_view(template_name = 'index.html'), name = 'index'),
 ]
