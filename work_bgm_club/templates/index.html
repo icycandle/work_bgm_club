@@ -19,7 +19,7 @@
     </script>
     <p>{{request.user.email}} <a href="/accounts/logout/">登出</a></p>
   {% else %}
-    <a href='{% provider_login_url "facebook" method="oauth2" %}'>FB登入</a>
+    <a href='{% provider_login_url "facebook" method="js_sdk" %}'>FB登入</a>
   {% endif %}
 
   <div id="app">
