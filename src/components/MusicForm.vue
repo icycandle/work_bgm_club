@@ -92,12 +92,12 @@ export default {
       return false;
     },
     submit() {
+      const vm = this;
       const apiUrl = '/api/musiclinks';
       const postData = {
         url: this.youtubeLink,
         jobtype: this.jobtype,
         comment: this.comment,
-        // user: -1, // fakedata
       };
 
       this.axios({
@@ -106,9 +106,8 @@ export default {
         data: postData,
       })
         .then((result) => {
-          console.log(result);
-          // const bgmId = result.bgmId
-          // router.push({ name: 'user', params: { bgmId }})
+          const bgmId = result.id;
+          vm.$router.push({ name: 'music-detail', params: { id: bgmId } });
         })
         .catch((err) => {
           console.log(err);

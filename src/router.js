@@ -14,6 +14,7 @@ const routes = [{
 },
 {
   // this.$route.params.id
+  name: 'music-detail',
   path: '/bgm/:id',
   component: BackGroundMusicDetail,
 },
