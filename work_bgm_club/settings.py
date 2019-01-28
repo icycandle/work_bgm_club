@@ -62,8 +62,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-SITE_ID = 1
-
 ROOT_URLCONF = 'work_bgm_club.urls'
 
 TEMPLATES = [
@@ -170,3 +168,5 @@ except ImportError:
     EMAIL_HOST = 'smtp.gmail.com'
     EMAIL_HOST_USER = 'email-address@gmail.com'
     EMAIL_HOST_PASSWORD = 'fake-passwd'
+    # EMAIL_BACKEND = 'djcelery_email.backends.CeleryEmailBackend'
+    SITE_ID = 3
