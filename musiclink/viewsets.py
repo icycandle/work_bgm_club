@@ -4,9 +4,12 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from rest_framework.response import Response
 
 from musiclink.models import MusicLink
+from musiclink.permissions import IsOwnerOrReadOnly
 
 
 class MusicLinkSerializer(serializers.ModelSerializer):
+    username = serializers.ReadOnlyField(source='user.username')
+
     class Meta:
         model = MusicLink
         fields = '__all__'
@@ -15,4 +18,10 @@ class MusicLinkSerializer(serializers.ModelSerializer):
 class MusicLinkViewSet(viewsets.ModelViewSet):
     queryset = MusicLink.objects.all()
     serializer_class = MusicLinkSerializer
-    permission_classes = [IsAuthenticatedOrReadOnly]
+    permission_classes = [
+        IsAuthenticatedOrReadOnly,
+        IsOwnerOrReadOnly,
+    ]
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)

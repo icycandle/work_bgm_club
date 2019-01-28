@@ -15,10 +15,12 @@
 </template>
 
 <script>
+
 export default {
   name: 'BackGroundMusicDetail',
   data() {
     const bgmId = 13;
+    // const apiUrl = `/api/musiclinks/${bgmId}.json`;
     const youtubeHash = 'YSMXbbw2B8Y';
     const workType = '寫程式';
     const youtubeLink = `https://www.youtube.com/embed/${youtubeHash}`;
