@@ -56,7 +56,7 @@ export default {
   methods: {
     checkYoutubeUrl(url) {
       if (!url) return false;
-      const pattern1 = /www\.youtube\.com\/watch/;
+      const pattern1 = /youtube\.com\/watch/;
       const pattern2 = /youtu\.be\//;
       if (url.match(pattern1)) {
         return true;

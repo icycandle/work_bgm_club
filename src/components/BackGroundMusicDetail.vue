@@ -21,8 +21,8 @@ export default {
   name: 'BackGroundMusicDetail',
   methods: {
     parseYouTubeHash(url) {
-      const pattern1 = /youtube\.com\/watch\?v=(wjVjHce8uME)/;
-      const pattern2 = /youtu\.be\/(wjVjHce8uME)/;
+      const pattern1 = /youtube\.com\/watch\?v=([\d\w]+)/;
+      const pattern2 = /youtu\.be\/([\d\w]+)/;
       if (url.match(pattern1)) {
         const regexResult = url.match(pattern1);
         const hash = regexResult[1];
