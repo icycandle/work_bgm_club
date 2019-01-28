@@ -1,12 +1,9 @@
 <template>
-  <form class="music-form"
-    @submit="checkForm"
-    method="post"
-    >
-    <p v-if="errors.length">
-      <b>Please correct the following error(s):</b>
+  <form class="music-form">
+    <p class="alert alert-warning row" v-if="errors.length">
+      <b>請修正下列錯誤:</b>
       <ul>
-        <li v-for="error in errors">{{ error }}</li>
+        <li v-for="error in errors" :key="error">{{ error }}</li>
       </ul>
     </p>
 
@@ -46,7 +43,10 @@
         ></textarea>
       </div>
     </div>
-    <button type="submit" class="btn btn-primary btn-large">送出表單，正式加入「工作背景音樂俱樂部」！</button>
+    <div
+    class="btn btn-primary btn-large"
+    @click="checkForm"
+    >送出表單，正式加入「工作背景音樂俱樂部」！</div>
   </form>
 </template>
 
@@ -55,37 +55,49 @@ export default {
   name: 'MusicForm',
   methods: {
     checkYoutubeUrl(url) {
-      this.axios({
-        url,
-        method: 'GET',
-      })
-        .then((result) => {
-          console.log(result);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      if (!url) return false;
+      const pattern1 = /www\.youtube\.com\/watch/;
+      const pattern2 = /youtu\.be\//;
+      if (url.match(pattern1)) {
+        return true;
+      } else if (url.match(pattern2)) {
+        return true;
+      }
+      return false;
+      // this.axios({
+      //   url,
+      //   method: 'GET',
+      // })
+      //   .then((result) => {
+      //     console.log(result);
+      //   })
+      //   .catch((err) => {
+      //     console.log(err);
+      //   });
     },
-    checkForm(e) {
+    checkForm() {
       this.errors = [];
 
-      if (this.youtubeLink !== 100) {
-        this.errors.push('Total must be 100!');
+      if (!this.checkYoutubeUrl(this.youtubeLink)) {
+        this.errors.push('請確認輸入的 youtube 連結正確');
+      }
+      if (!this.jobtype) {
+        this.errors.push('請選擇對應的工作情境');
       }
 
       if (!this.errors.length) {
+        this.submit();
         return true;
       }
-
-      e.preventDefault();
       return false;
     },
     submit() {
-      const apiUrl = '/api/musiclinks.json';
+      const apiUrl = '/api/musiclinks';
       const postData = {
         url: this.youtubeLink,
         jobtype: this.jobtype,
         comment: this.comment,
+        // user: -1, // fakedata
       };
 
       this.axios({
@@ -95,6 +107,8 @@ export default {
       })
         .then((result) => {
           console.log(result);
+          // const bgmId = result.bgmId
+          // router.push({ name: 'user', params: { bgmId }})
         })
         .catch((err) => {
           console.log(err);

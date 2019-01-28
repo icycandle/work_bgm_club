@@ -6,7 +6,7 @@ class MusicLink(models.Model):
     user = models.ForeignKey('auth.User', on_delete=models.CASCADE, related_name='music_links')
     url = models.URLField('url', max_length=255)
     jobtype = models.CharField('jobtype', max_length=32, db_index=True)
-    comment = models.TextField(null=True)
+    comment = models.TextField(null=True, blank=True)
 
     class Meta:
         """Meta definition for MusicLink."""
