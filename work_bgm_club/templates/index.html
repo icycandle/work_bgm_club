@@ -4,11 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Work BGM Club</title>
-
+    {% render_bundle 'app' 'css' %}
 </head>
 <body>
 <div id="app">
 </div>
-{% render_bundle 'app' %}
+{% if debug %}
+    {% render_bundle 'app' %}
+{% else %}
+    {% render_bundle 'manifest' %}
+    {% render_bundle 'vendor' %}
+    {% render_bundle 'app' 'js' %}
+{% endif %}
 </body>
 </html>

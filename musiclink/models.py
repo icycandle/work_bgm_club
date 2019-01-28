@@ -1,5 +1,4 @@
 from django.db import models
-from django.core.urlresolvers import reverse
 
 
 class UserQueue(models.Model):
@@ -46,7 +45,7 @@ class MusicLink(models.Model):
         super().save(*args, **kwargs)
         if just_created:
             # record user to user queue
-            UserQueue.objects.create(user=self.user, comment=self.comment)
+            UserQueue.objects.create(user=self.user, jobtype=self.jobtype)
 
     class Meta:
         verbose_name = 'MusicLink'

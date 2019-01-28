@@ -17,6 +17,24 @@ def send_music_link_email(sender, **kwargs):
     '''
     musiclink = kwargs['instance']
     jobtype = musiclink.jobtype
+
+    ############## test ##############
+    to_email = 'icycandle@gmail.com'
+    subject = '來自背景音樂俱樂部的「{0.jobtype}」音樂 #{0.id}'.format(musiclink)
+    send_email(
+        subject=subject,
+        from_email='service@dwave.cc',
+        to_email=to_email,
+        template='mail_template.html',
+        context={
+            'subject': subject,
+            'musiclink': musiclink,
+            'site': 'https://workbgmclub.wearetags.com',
+        }
+    )
+    return
+    ############## test ##############
+
     user_from_queue = UserQueue.objects.filter(
         jobtype=jobtype,
     ).exclude(

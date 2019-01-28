@@ -106,7 +106,8 @@ export default {
         data: postData,
       })
         .then((result) => {
-          const bgmId = result.id;
+          console.log(result);
+          const bgmId = result.data.id;
           vm.$router.push({ name: 'music-detail', params: { id: bgmId } });
         })
         .catch((err) => {

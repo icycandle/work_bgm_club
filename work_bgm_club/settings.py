@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '4fgwj#c-b4fp4@%8mded8p-#-h*w950-ydtwyd+gpwu!(ynxq^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.facebook',
     'django_extensions',
     'djcelery_email',
+    'django_celery_results',
     'rest_framework',
     'webpack_loader',
     'work_bgm_club',
@@ -133,9 +134,14 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'dist'),
+)
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'public')
+
 # setting Gmail
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_BACKEND = 'djcelery_email.backends.CeleryEmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
@@ -149,8 +155,11 @@ WEBPACK_LOADER = {
     }
 }
 
+CELERY_RESULT_BACKEND = 'django-db'
+
 try:
-    from local_settings import *
+    from .local_settings import *
+    print(">>> Import local_settings")
 except ImportError:
     print(">>> local_settings ImportError")
     ALLOWED_HOSTS = ['fake.com']
