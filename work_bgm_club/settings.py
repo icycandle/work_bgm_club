@@ -137,9 +137,9 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'xxxx@gmail.com'
+EMAIL_HOST_USER = 'service@dwave.cc'
 # Application Key
-EMAIL_HOST_PASSWORD = 'xxxx'
+EMAIL_HOST_PASSWORD = 'ntumir409dn'
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
