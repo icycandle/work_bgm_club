@@ -204,5 +204,5 @@ except ImportError:
     EMAIL_HOST = 'smtp.gmail.com'
     EMAIL_HOST_USER = 'email-address@gmail.com'
     EMAIL_HOST_PASSWORD = 'fake-passwd'
-    # EMAIL_BACKEND = 'djcelery_email.backends.CeleryEmailBackend'
+    EMAIL_BACKEND = 'djcelery_email.backends.CeleryEmailBackend'
     SITE_ID = 3

@@ -53,6 +53,11 @@
 <script>
 export default {
   name: 'MusicForm',
+  created() {
+    if (!window.currentUser) {
+      location.pathname = '/accounts/facebook/login/';
+    }
+  },
   methods: {
     checkYoutubeUrl(url) {
       if (!url) return false;

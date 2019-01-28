@@ -30,5 +30,7 @@ urlpatterns = [
     # path('api/public/', views.public),
     # path('api/private/', views.private),
     path('accounts/', include('allauth.urls')),
-    path('', TemplateView.as_view(template_name = 'index.html'), name = 'index'),
+    path('privacy_policy/', TemplateView.as_view(template_name='privacy_policy.html')),
+    path('termsofservice/', TemplateView.as_view(template_name='termsofservice.html')),
+    path('', TemplateView.as_view(template_name='index.html'), name='index'),
 ]
