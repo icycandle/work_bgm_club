@@ -1,9 +1,13 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
+
+class User(AbstractUser):
+    pass
 
 
 class UserQueue(models.Model):
     """記錄待寄信件"""
-    user = models.ForeignKey('auth.User', on_delete=models.CASCADE, related_name='user_queue')
+    user = models.ForeignKey('musiclink.User', on_delete=models.CASCADE, related_name='user_queue')
     jobtype = models.CharField('jobtype', max_length=32, db_index=True)
     create_at = models.DateTimeField('create_at', auto_now_add=True)
 
@@ -31,7 +35,7 @@ class LinkQueue(models.Model):
 
 class MusicLink(models.Model):
     """Model definition for MusicLink."""
-    user = models.ForeignKey('auth.User', on_delete=models.CASCADE, related_name='music_links')
+    user = models.ForeignKey('musiclink.User', on_delete=models.CASCADE, related_name='music_links')
     url = models.URLField('url', max_length=255)
     jobtype = models.CharField('jobtype', max_length=32, db_index=True)
     comment = models.TextField(null=True, blank=True)
