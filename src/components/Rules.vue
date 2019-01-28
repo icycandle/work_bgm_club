@@ -5,7 +5,7 @@
         <span class="stdcolor">★</span>不要談論背景音樂俱樂部。分享你引以為豪的工作音樂。
       </li>
       <li>俱樂部規則二
-        <span class="stdcolor">★</span>不要談論背景音樂俱樂部。分享的工作音樂以youtube連結為形式，歌單亦可。
+        <span class="stdcolor">★</span>不要談論背景音樂俱樂部。分享的工作音樂以youtube連結為形式。
       </li>
       <li>俱樂部規則三
         <span class="stdcolor">★</span>你將會收到來自陌生人的歌單，陪伴你完成你的工作。

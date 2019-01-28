@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '4fgwj#c-b4fp4@%8mded8p-#-h*w950-ydtwyd+gpwu!(ynxq^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # 'musiclink.apps.MusiclinkConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,6 +44,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.facebook',
     'django_extensions',
+    'djcelery_email',
     'rest_framework',
     'webpack_loader',
     'work_bgm_club',
@@ -132,14 +134,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # setting Gmail
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# TLS Port
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'service@dwave.cc'
-# Application Key
-EMAIL_HOST_PASSWORD = 'ntumir409dn'
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = 'djcelery_email.backends.CeleryEmailBackend'
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
@@ -152,3 +148,16 @@ WEBPACK_LOADER = {
         'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json'),
     }
 }
+
+try:
+    from local_settings import *
+except ImportError:
+    print(">>> local_settings ImportError")
+    ALLOWED_HOSTS = ['fake.com']
+    DEBUG = False
+    # TLS Port
+    EMAIL_PORT = 587
+    EMAIL_USE_TLS = True
+    EMAIL_HOST = 'smtp.gmail.com'
+    EMAIL_HOST_USER = 'email-address@gmail.com'
+    EMAIL_HOST_PASSWORD = 'fake-passwd'

@@ -1,6 +1,6 @@
 <template>
   <div class="music-detail">
-    <h5>{{jobType}} BGM #{{bgmId}} By {{username}}</h5>
+    <h5 v-if="bgmId">來自{{username}}的{{jobType}}背景音樂 #{{bgmId}}</h5>
     <iframe
       v-if="youtubeLink"
       width="560"
@@ -49,6 +49,7 @@ export default {
         vm.jobType = result.data.jobtype;
         vm.comment = result.data.comment;
         vm.username = result.data.username;
+        vm.bgmId = result.data.id;
         const youtubeHash = vm.parseYouTubeHash(vm.url);
         vm.youtubeLink = `https://www.youtube.com/embed/${youtubeHash}`;
       })
