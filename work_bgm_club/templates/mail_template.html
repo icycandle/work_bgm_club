@@ -1,36 +1,56 @@
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <title>{{subject}}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 
-<body>
-  <style>
-    body {
-      background: #555;
-    }
+<body style="margin: 0; padding: 0;" bgcolor="555555">
+  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+      <td>
 
-    .main-info {
-      color: #f8b62d;
-    }
+        <table align="center" border="0" cellpadding="0" cellspacing="0" width="600">
+          <tr>
+            <td align="center" bgcolor="555555" style="padding: 40px 0 30px 0;">
+              <img src="{{site}}/static/assets/img/hitsong-doll.1d173f8.png" alt="Creating Email Magic" width="144" height="150" style="display: block;" />
+            </td>
+          </tr>
+          <tr>
+            <td bgcolor="#ffffff" style="padding: 40px 30px 40px 30px;">
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                  <td>
+                    嗨，{{user.email}}: <br>
+                    <p>剛剛有一位新朋友推薦了跟你相同類別的工作BGM，希望你會喜歡 :)</p>
+                    <p>
+                      <a href="{{site}}{{musiclink.get_absolute_url}}">{{site}}{{musiclink.get_absolute_url}}</a>
+                    </p>
+                    <p>為了避免發送太多信件造成困擾，目前俱樂部的規則是「每送一個音樂連結，會收到一封信」。如果你想多收到幾封信的話，可以多推薦一些音樂喔！</p>
+                    <p>
+                      祝工作愉快
+                    </p>
+                    <p>
+                      ── 來自
+                      <a style="color: #4f2a11; text-decoration:none;" href="{{site}}">WORK<span style="color: #e16b24">★</span>BGM CLUB</a>
+                    </p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td bgcolor="#e16b24">
+              <br>
+            </td>
+          </tr>
+        </table>
 
-    .stdcolor {
-      color: #e16b24;
-    }
-
-  </style>
-  <div>
-    <div>
-      <a href="{{site}}{{musiclink.get_absolute_url}}">{{site}}{{musiclink.get_absolute_url}}</a>
-      <hr>
-      <p align="center">
-        <a href="{{site}}">
-          <h1 class="main-info">WORK<span class="stdcolor">★</span>BGM CLUB</h1>
-        </a>
-      </p>
-    </div>
-  </div>
+      </td>
+    </tr>
+  </table>
 </body>
 
 </html>

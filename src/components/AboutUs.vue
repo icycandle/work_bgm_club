@@ -11,8 +11,9 @@
         <span class="stdcolor">HitSong</span> 的終極計畫是，將音樂的樂趣重新植入人們的生活之中。他們是如此狂熱，簡直不擇手段。
       </li>
       <li>要找到
-        <span class="stdcolor">HitSong</span> 的真身很困難，但他們會閱讀所有寄到
-        <email>service@dwave.cc</email>的電子郵件。
+        <span class="stdcolor">HitSong</span> 的真身很困難，但你可以寄電子郵件到
+        <email>service@dwave.cc</email>
+        。
       </li>
       <li>其實
         <span class="stdcolor">HitSong</span> 根本就很喜歡閱讀大家寫來的電子郵件。

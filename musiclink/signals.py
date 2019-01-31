@@ -1,8 +1,10 @@
-from django.db.models.signals import post_save
 from django.conf import settings
+from django.contrib.sites.shortcuts import get_current_site
+from django.db.models.signals import post_save
 from django.dispatch import receiver
-from musiclink.models import MusicLink, UserQueue, LinkQueue
+
 from musiclink.mail import send_email
+from musiclink.models import LinkQueue, MusicLink, UserQueue
 
 
 @receiver(post_save, sender=MusicLink)
@@ -19,20 +21,21 @@ def send_music_link_email(sender, **kwargs):
     jobtype = musiclink.jobtype
 
     ############## test ##############
-    to_email = 'icycandle@gmail.com'
-    subject = '來自背景音樂俱樂部的「{0.jobtype}」音樂 #{0.id}'.format(musiclink)
-    send_email(
-        subject=subject,
-        from_email='service@dwave.cc',
-        to_email=to_email,
-        template='mail_template.html',
-        context={
-            'subject': subject,
-            'musiclink': musiclink,
-            'site': 'https://workbgmclub.wearetags.com',
-        }
-    )
-    return
+    # to_email = 'icycandle@gmail.com'
+    # subject = '來自背景音樂俱樂部的「{0.jobtype}」音樂 #{0.id}'.format(musiclink)
+    # send_email(
+    #     subject=subject,
+    #     from_email='service@dwave.cc',
+    #     to_email=to_email,
+    #     template='mail_template.html',
+    #     context={
+    #         'user': user,
+    #         'subject': subject,
+    #         'musiclink': musiclink,
+    #         'site': 'https://workbgmclub.wearetags.com',
+    #     }
+    # )
+    # return
     ############## test ##############
 
     user_from_queue = UserQueue.objects.filter(
@@ -44,15 +47,17 @@ def send_music_link_email(sender, **kwargs):
         # 代表有東西可寄了
         to_email = user_from_queue.user.email
         subject = '來自背景音樂俱樂部的「{0.jobtype}」音樂 #{0.id}'.format(musiclink)
+        site = 'https://' + get_current_site(None).domain
         send_email(
             subject=subject,
             from_email='service@dwave.cc',
             to_email=to_email,
             template='mail_template.html',
             context={
+                'user': user_from_queue.user,
                 'subject': subject,
                 'musiclink': musiclink,
-                'site': 'https://workbgmclub.wearetags.com',
+                'site': site,
             }
         )
         user_from_queue.delete()
