@@ -21,3 +21,4 @@ selenium-debug.log
 *.sqlite3
 local_settings.py
 public/
+webpack-stats.json
