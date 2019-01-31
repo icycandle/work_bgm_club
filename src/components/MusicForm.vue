@@ -55,8 +55,8 @@ export default {
   name: 'MusicForm',
   created() {
     if (!window.currentUser) {
-      // location.pathname = '/accounts/facebook/login/'; // oauth2
-      window.allauth.facebook.login('', 'authenticate', 'login'); // js_sdk
+      location.pathname = '/accounts/facebook/login/'; // oauth2
+      // window.allauth.facebook.login('', 'authenticate', 'login'); // js_sdk
     }
   },
   methods: {
