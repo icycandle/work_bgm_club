@@ -17,6 +17,10 @@ class MusicLinkSerializer(serializers.ModelSerializer):
         model = MusicLink
         # fields = '__all__'
         exclude = ('user',)
+        read_only_fields = (
+            'sum_value',
+            'username',
+        )
 
 class MusicLinkViewSet(viewsets.ModelViewSet):
     queryset = MusicLink.objects.all()
