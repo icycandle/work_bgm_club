@@ -80,7 +80,7 @@ export default {
           console.log(err);
         });
     },
-    loadUserFeedbock(value) {
+    loadUserFeedbock() {
       const vm = this;
       const apiUrl = `/api/musicrating?format=json&user=${window.currentUser}&musiclink=${vm.bgmId}`;
       this.axios({
