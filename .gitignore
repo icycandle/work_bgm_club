@@ -22,3 +22,4 @@ selenium-debug.log
 local_settings.py
 public/
 webpack-stats.json
+public/index.html
