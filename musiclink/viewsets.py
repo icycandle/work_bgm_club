@@ -11,7 +11,7 @@ from musiclink.permissions import IsOwnerOrReadOnly
 
 class MusicLinkSerializer(serializers.ModelSerializer):
     username = serializers.ReadOnlyField(source='user.username')
-    sum_value = serializers.IntegerField()
+    sum_value = serializers.IntegerField(read_only=True)
 
     class Meta:
         model = MusicLink
