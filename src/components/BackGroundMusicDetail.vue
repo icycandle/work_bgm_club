@@ -15,16 +15,26 @@
     <br>
     <div class="row text-center justify-content-md-center">
       <a class="btn btn-primary col-3 mr-1" @click="userFeedbock(1)">
-        <span v-if="feedBackValue===1" class="ccc"><span class="stdcolor">✓</span> 喜歡 ({{sumValue}})</span>
-        <span v-else class="ccc">♥ 喜歡 ({{sumValue}})</span>
+        <span class="ccc">
+          <span v-if="feedBackValue===1" class="stdcolor">✓</span>
+          <span v-else>♥</span>
+          喜歡
+          <span v-if="sumValue">({{sumValue}})</span>
+        </span>
       </a>
       <a class="btn btn-primary col-3 mr-1" @click="userFeedbock(0)">
-        <span v-if="feedBackValue===0" class="ccc"><span class="stdcolor">✓</span> 不喜歡</span>
-        <span v-else class="ccc">✝ 不喜歡</span>
+        <span class="ccc">
+          <span v-if="feedBackValue===0" class="stdcolor">✓</span>
+          <span v-else>✝</span>
+          不喜歡
+        </span>
       </a>
       <a class="btn btn-primary col-3 mr-1" @click="userFeedbock(-1)">
-        <span v-if="feedBackValue===-1" class="ccc"><span class="stdcolor">✓</span> 這不是音樂！</span>
-        <span v-else class="ccc">⊘ 這不是音樂！</span>
+        <span class="ccc">
+          <span v-if="feedBackValue===-1" class="stdcolor">✓</span>
+          <span v-else>⊘</span>
+          這不是音樂！
+        </span>
       </a>
     </div>
   </div>
