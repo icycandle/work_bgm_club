@@ -1,36 +1,10 @@
-{% load render_bundle from webpack_loader %}
-{% load socialaccount %}
+{% extends 'base.html' %}
 
 
-<html lang="en">
+{% block head_title %}
+Work BGM Club
+{% endblock %}
 
-<head>
-  <meta charset="UTF-8">
-  <title>Work BGM Club</title>
-  {% render_bundle 'app' 'css' %}
-</head>
-
-<body>
-  {% providers_media_js %}
-
-  {% if request.user.is_authenticated %}
-    <script>
-    window.currentUser = {{user.pk}}
-    </script>
-    <p>{{request.user.email}} <a href="/accounts/logout/">登出</a></p>
-  {% else %}
-    <a href='{% provider_login_url "facebook" method="js_sdk" %}'>FB登入</a>
-  {% endif %}
-
-  <div id="app">
-  </div>
-  {% if debug %}
-  {% render_bundle 'app' %}
-  {% else %}
-  {% render_bundle 'manifest' %}
-  {% render_bundle 'vendor' %}
-  {% render_bundle 'app' 'js' %}
-  {% endif %}
-</body>
-
-</html>
+{% block content %}
+<div id="app"></div>
+{% endblock content %}

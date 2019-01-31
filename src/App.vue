@@ -31,6 +31,8 @@ export default {
   margin-top: 10px;
   color: $main-color-light;
 
+  padding-bottom: 60px;
+
   >h1.main-info {
     margin: 0;
   }

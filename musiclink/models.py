@@ -57,3 +57,28 @@ class MusicLink(models.Model):
 
     def __str__(self):
         return '{0.user.email}-{0.jobtype}-{0.url}'.format(self)
+
+FEEDBACK_VALUE_CHOICES = (
+    (1, '喜歡'),
+    (0, '不喜歡'),
+    (-1, '這不是音樂！'),
+)
+
+class MusicRating(models.Model):
+    """Model definition for Feedback."""
+    user = models.ForeignKey('musiclink.User', on_delete=models.CASCADE, related_name='music_rating')
+    musiclink = models.ForeignKey('musiclink.MusicLink', on_delete=models.CASCADE, related_name='music_rating')
+    value = models.IntegerField('value', choices=FEEDBACK_VALUE_CHOICES)
+    create_at = models.DateTimeField('create_at', auto_now_add=True)
+
+    class Meta:
+        """Meta definition for Feedback."""
+        unique_together = (
+            ('user', 'musiclink'),
+        )
+
+        verbose_name = 'Feedback'
+        verbose_name_plural = 'Feedbacks'
+
+    def __str__(self):
+        return '{0.user}-{0.musiclink}: {0.value}'.format(self)

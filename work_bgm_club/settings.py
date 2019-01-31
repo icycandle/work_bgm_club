@@ -39,10 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    'allauth.socialaccount.providers.facebook',
     'django_extensions',
     'djcelery_email',
     'django_celery_results',
@@ -50,6 +46,10 @@ INSTALLED_APPS = [
     'webpack_loader',
     'work_bgm_club',
     'musiclink',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.facebook',
 ]
 
 MIDDLEWARE = [
@@ -67,7 +67,11 @@ ROOT_URLCONF = 'work_bgm_club.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        # 'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'work_bgm_club', 'templates'),
+            os.path.join(BASE_DIR, 'work_bgm_club', 'templates', 'allauth'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -190,6 +194,10 @@ SOCIALACCOUNT_EMAIL_REQUIRED = True
 LOGIN_REDIRECT_URL = '/#/music-form'
 
 AUTH_USER_MODEL = 'musiclink.User'
+
+INTERNAL_IPS = (
+    '127.0.0.1',
+)
 
 try:
     from .local_settings import *

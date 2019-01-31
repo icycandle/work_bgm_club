@@ -19,10 +19,11 @@ from django.views.generic import TemplateView
 # from work_bgm_club import views
 
 from rest_framework import routers
-from musiclink.viewsets import MusicLinkViewSet
+from musiclink.viewsets import MusicLinkViewSet, MusicRatingViewSet
 
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'musiclinks', MusicLinkViewSet)
+router.register(r'musicrating', MusicRatingViewSet)
 
 urlpatterns = [
     path('api/', include(router.urls)),
