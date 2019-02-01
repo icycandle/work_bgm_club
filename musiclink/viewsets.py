@@ -54,7 +54,7 @@ class MusicRatingViewSet(viewsets.ModelViewSet):
     authentication_classes = [SessionAuthentication,]
     permission_classes = [
         IsAuthenticatedOrReadOnly,
-        IsOwnerOrReadOnly,
+        # IsOwnerOrReadOnly,
     ]
 
     def perform_create(self, serializer):
