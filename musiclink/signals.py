@@ -12,6 +12,8 @@ admin_action_send_music_email_to_user = Signal(providing_args=["user"])
 @receiver(admin_action_send_music_email_to_user, sender=User)
 def admin_action_send_music_email_to_user_(sender, user, **kwargs):
     seed_musiclink = user.music_links.last()
+    if not seed_musiclink:
+        return (False, '{user} seed_musiclink not found.'.format(user=user))
     same_type_musiclink = MusicLink.objects.filter(
         jobtype=seed_musiclink.jobtype,
         pk__gt=seed_musiclink.pk,  # get newer
@@ -19,6 +21,9 @@ def admin_action_send_music_email_to_user_(sender, user, **kwargs):
     if same_type_musiclink:
         musiclink = same_type_musiclink.order_by('?')[0]
         send_music_email_to_user(user, musiclink)
+        return (True, '{user} action done.'.format(user=user))
+    else:
+        return (False, '{user} same_type_musiclink not found.'.format(user=user))
 
 def send_music_email_to_user(user, musiclink):
     to_emails = EmailAddress.objects.filter(user=user).values_list('email', flat=True)
